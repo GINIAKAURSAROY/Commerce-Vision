@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
+  <test thread-count="5" name="OrderConfirmation(failed)">
+    <classes>
+      <class name="TestPackage.OrderConfirmationTest">
+        <methods>
+          <include name="teardown"/>
+          <include name="basepage"/>
+          <include name="OrderConfirmation"/>
+          <include name="checkoutPage"/>
+        </methods>
+      </class> <!-- TestPackage.OrderConfirmationTest -->
+    </classes>
+  </test> <!-- OrderConfirmation(failed) -->
+</suite> <!-- Failed suite [Suite] -->
