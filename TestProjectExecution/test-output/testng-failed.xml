@@ -7,7 +7,7 @@
         <methods>
           <include name="teardown"/>
           <include name="basepage"/>
-          <include name="OrderConfirmation"/>
+          <include name="checkoutPage"/>
         </methods>
       </class> <!-- TestPackage.OrderConfirmationTest -->
     </classes>

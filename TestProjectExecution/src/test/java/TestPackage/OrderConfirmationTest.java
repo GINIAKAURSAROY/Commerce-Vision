@@ -133,9 +133,9 @@ public class OrderConfirmationTest extends Base{
 	    
 	    wait.until(ExpectedConditions.elementToBeClickable(cp.getCheckoutSubmitButton())).click();
 
+	    wait.until(ExpectedConditions.not(ExpectedConditions.invisibilityOf(cp.getAcceptMessageButton())));
 	    WebElement element = cp.getAcceptMessageButton();
-	    wait.until(ExpectedConditions.elementToBeClickable
-				(element)).click();
+	    element.click();
 
   }
   
