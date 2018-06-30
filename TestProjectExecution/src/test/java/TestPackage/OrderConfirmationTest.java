@@ -3,12 +3,16 @@ package TestPackage;
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Predicate;
+
+import javax.annotation.Nullable;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.http.util.Asserts;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,6 +24,8 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
+
 import org.testng.Assert;
 
 import pageObjects.CheckoutPage;
@@ -32,7 +38,7 @@ import resources.Base;
 
 public class OrderConfirmationTest extends Base{
 	
-	public WebDriverWait wait = null;
+	public WebDriverWait wait,wait2 = null;
 	public HomePage hm = null;
 	ProductPage pp = null;
 	ProductSearch ps =null;
@@ -50,6 +56,7 @@ public class OrderConfirmationTest extends Base{
   @BeforeTest
   /* This block of code will do initializations
    * enter the search=racquet (which is present in properties files
+   * 
    * and will click on search button
    * All the elements used in this class are stored as part of pageObjects classes
    * which can be later used too*/
@@ -61,7 +68,9 @@ public class OrderConfirmationTest extends Base{
 		 
 		js = (JavascriptExecutor) driver;
 		 
+		
 		 wait = new WebDriverWait(driver, 6);
+		 wait = new WebDriverWait(driver, 10);
 	 
 		 
 		 
@@ -124,11 +133,13 @@ public class OrderConfirmationTest extends Base{
 	    
 	    wait.until(ExpectedConditions.elementToBeClickable(cp.getCheckoutSubmitButton())).click();
 
-		wait.until(ExpectedConditions.elementToBeClickable(cp.getAcceptMessageButton())).click();
+	    WebElement element = cp.getAcceptMessageButton();
+	    wait.until(ExpectedConditions.elementToBeClickable
+				(element)).click();
+
   }
   
 
-  
   @Test(priority=3)
   /*
    * In this page we are entering all the value without hardcoding
